@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080d1b">
+    <title>{% block title %}SecureVault | Cybersecurity{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="navbar">
+            <a class="brand" href="{{ url_for('home') }}">
+                ◈ Secure<span>Vault</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('secure_data') }}">Secure Data</a>
+                <a href="{{ url_for('security_test') }}">Security Test</a>
+                <a href="{{ url_for('capability') }}">Capability</a>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <section aria-live="polite">
+                    {% for category, message in messages %}
+                        <div class="alert">{{ message }}</div>
+                    {% endfor %}
+                </section>
+            {% endif %}
+        {% endwith %}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="footer">
+            <p>SecureVault · CodeAlpha Cybersecurity Project</p>
+            <p>Educational demonstration of data protection and SQL injection pattern detection.</p>
+        </footer>
+    </div>
+</body>
+</html>

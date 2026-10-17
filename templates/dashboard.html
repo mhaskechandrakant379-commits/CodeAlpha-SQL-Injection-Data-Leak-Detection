@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | SecureVault{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">SECUREVAULT / DASHBOARD</span>
+    <h1>
+        Welcome back,<br>
+        <span class="gradient-text">{{ username }}</span>
+    </h1>
+    <p>
+        Your security workspace is ready. Explore the available tools
+        to test suspicious inputs and protect demonstration data.
+    </p>
+</section>
+
+<section class="grid">
+    <article class="card">
+        <div class="card-icon">01</div>
+        <h2>SQL Injection Detection</h2>
+        <p>Check sample inputs for suspicious SQL injection patterns.</p>
+        <a class="btn" href="{{ url_for('security_test') }}">Open Security Test →</a>
+    </article>
+
+    <article class="card">
+        <div class="card-icon">02</div>
+        <h2>Secure Data Vault</h2>
+        <p>Open your secure data page and explore encrypted notes.</p>
+        <a class="btn" href="{{ url_for('secure_data') }}">Open Secure Data →</a>
+    </article>
+
+    <article class="card">
+        <div class="card-icon">03</div>
+        <h2>Capability Access</h2>
+        <p>Explore capability-based access in this security project.</p>
+        <a class="btn" href="{{ url_for('capability') }}">Open Capability →</a>
+    </article>
+</section>
+
+<section class="card">
+    <span class="eyebrow">ACCOUNT STATUS</span>
+    <h2>You are logged in successfully.</h2>
+    <p>Database queries use SQLAlchemy ORM.</p>
+    <p>Passwords are stored using secure password hashing.</p>
+
+    <form method="POST" action="{{ url_for('logout') }}">
+        <button type="submit" class="btn btn-secondary">Logout</button>
+    </form>
+</section>
+{% endblock %}

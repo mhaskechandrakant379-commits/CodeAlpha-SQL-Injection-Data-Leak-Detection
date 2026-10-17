@@ -1,0 +1,143 @@
+﻿
+{% extends "base.html" %}
+
+{% block title %}Capability Access | SecureVault{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">SECUREVAULT / ACCESS CONTROL</span>
+
+    <h1>
+        Capability-Based<br>
+        <span class="gradient-text">Secure Access</span>
+    </h1>
+
+    <p>
+        Generate a temporary capability code and use it to save
+        encrypted demo information. Each code expires in 10 minutes
+        and can be used only once.
+    </p>
+</section>
+
+{% if message %}
+<section class="card">
+    <span class="eyebrow">SYSTEM MESSAGE</span>
+    <p>{{ message }}</p>
+</section>
+{% endif %}
+
+{% if one_time_code %}
+<section class="card">
+    <div class="card-icon">✓</div>
+    <span class="eyebrow">NEW CAPABILITY CREATED</span>
+    <h2>Copy Your Code Now</h2>
+
+    <p>
+        This code is shown only when generated. Copy it and keep it private.
+        It expires in 10 minutes and can be used once.
+    </p>
+
+    <div class="note">
+        <code>{{ one_time_code }}</code>
+    </div>
+
+    <div class="button-row">
+        <button
+            type="button"
+            class="btn"
+            onclick="navigator.clipboard.writeText({{ one_time_code | tojson }}).then(() => { this.textContent = 'Copied!'; }).catch(() => { alert('Copy failed. Please select and copy the code manually.'); })"
+        >
+            Copy Capability Code
+        </button>
+    </div>
+</section>
+{% endif %}
+
+<section class="grid">
+    <article class="card">
+        <div class="card-icon">01</div>
+        <span class="eyebrow">GENERATE ACCESS</span>
+        <h2>Generate Capability Code</h2>
+
+        <p>
+            Create a temporary code for one-time access to the
+            encrypted information workflow.
+        </p>
+
+        <form method="post">
+            <input type="hidden" name="action" value="generate">
+
+            <button type="submit" class="btn">
+                Generate New Code →
+            </button>
+        </form>
+    </article>
+
+    <article class="card">
+        <div class="card-icon">02</div>
+        <span class="eyebrow">REDEEM ACCESS</span>
+        <h2>Use Code to Save Data</h2>
+
+        <p>
+            Enter a valid capability code and the demo information
+            you want to save.
+        </p>
+
+        <form method="post">
+            <input type="hidden" name="action" value="redeem">
+
+            <label for="token">Capability code</label>
+            <input
+                id="token"
+                name="token"
+                maxlength="200"
+                placeholder="Paste your capability code"
+                autocomplete="off"
+                required
+            >
+
+            <label for="content">Demo information</label>
+            <textarea
+                id="content"
+                name="content"
+                rows="5"
+                maxlength="5000"
+                placeholder="Enter sample demo information..."
+                required
+            ></textarea>
+
+            <button type="submit" class="btn">
+                Use Code and Save →
+            </button>
+        </form>
+    </article>
+</section>
+
+<section class="card">
+    <span class="eyebrow">SECURITY NOTES</span>
+    <h2>How Capability Access Works</h2>
+
+    <p>
+        <strong>Temporary:</strong> Capability codes expire after
+        10 minutes.
+    </p>
+
+    <p>
+        <strong>One-time use:</strong> A code is intended to be redeemed
+        only once.
+    </p>
+
+    <p>
+        <strong>Protect your code:</strong> Treat it like a temporary
+        access credential. Do not share it or use real sensitive data
+        for demonstrations.
+    </p>
+</section>
+
+<div class="button-row">
+    <a class="btn btn-secondary"
+       href="{{ url_for('dashboard') }}">
+        ← Back to Dashboard
+    </a>
+</div>
+{% endblock %}

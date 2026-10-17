@@ -1,0 +1,114 @@
+﻿
+{% extends "base.html" %}
+
+{% block title %}Secure Data Vault | SecureVault{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">SECUREVAULT / ENCRYPTED STORAGE</span>
+
+    <h1>
+        Your Secure<br>
+        <span class="gradient-text">Data Vault</span>
+    </h1>
+
+    <p>
+        Store and view your sensitive demo information in one place.
+        Your application uses AES-256-GCM encryption for stored data.
+    </p>
+</section>
+
+<section class="grid">
+    <article class="card">
+        <div class="card-icon">01</div>
+        <span class="eyebrow">CREATE A RECORD</span>
+        <h2>Save New Information</h2>
+
+        <p>
+            Enter demo information below. Avoid using real passwords,
+            banking details, or other personal sensitive information.
+        </p>
+
+        <form method="post">
+            <label for="content">Sensitive demo information</label>
+
+            <textarea
+                id="content"
+                name="content"
+                rows="5"
+                maxlength="5000"
+                placeholder="Type your demo information here..."
+                required
+            ></textarea>
+
+            <button type="submit" class="btn">
+                Encrypt and Save →
+            </button>
+        </form>
+    </article>
+
+    <article class="card">
+        <div class="card-icon">02</div>
+        <span class="eyebrow">SECURITY DETAILS</span>
+        <h2>Vault Protection</h2>
+
+        <p>
+            <strong>AES-256-GCM</strong><br>
+            Authenticated encryption helps protect stored information
+            and detect unauthorized changes to encrypted data.
+        </p>
+
+        <p>
+            <strong>Private records</strong><br>
+            This vault is designed to display records associated
+            with your account.
+        </p>
+
+        <p>
+            <strong>Remember</strong><br>
+            Encryption key protection and secure deployment are also
+            essential to keeping stored data safe.
+        </p>
+    </article>
+</section>
+
+<section class="card">
+    <span class="eyebrow">YOUR STORAGE</span>
+    <h2>Saved Information</h2>
+
+    {% if notes %}
+        <div class="grid">
+            {% for note in notes %}
+                <article class="card">
+                    <div class="card-icon">#{{ note.id }}</div>
+
+                    <h3>Encrypted Record #{{ note.id }}</h3>
+
+                    <div class="note">
+                        {{ note.display_content }}
+                    </div>
+
+                    <p>
+                        <small>Saved: {{ note.created_at }}</small>
+                    </p>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="note">
+            <h3>Your vault is empty</h3>
+            <p>
+                No saved information yet. Add your first demo record
+                using the form above.
+            </p>
+        </div>
+    {% endif %}
+</section>
+
+<div class="button-row">
+    <a class="btn btn-secondary"
+       href="{{ url_for('dashboard') }}">
+        ← Back to Dashboard
+    </a>
+</div>
+{% endblock %}

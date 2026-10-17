@@ -1,0 +1,29 @@
+# Secrets and local development files
+encryption.key
+.venv/
+__pycache__/
+*.pyc
+instance/
+security_events.log
+# Environment variables and local secrets
+.env
+.env.*
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Python test and cache files
+.pytest_cache/
+# Backup and recovery files
+*.bak
+*.bak.*
+app_backup.py
+app_before_capability.py
+app_pre_capability_backup.py
+app_pre_deployment_backup.py
+patch_capability.py
+
+# Log files
+*.log

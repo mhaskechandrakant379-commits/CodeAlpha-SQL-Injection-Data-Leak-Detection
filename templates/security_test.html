@@ -1,0 +1,92 @@
+
+{% extends "base.html" %}
+
+{% block title %}SQL Injection Test | SecureVault{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">SECUREVAULT / SECURITY LAB</span>
+
+    <h1>
+        SQL Injection<br>
+        <span class="gradient-text">Detection Test</span>
+    </h1>
+
+    <p>
+        Test sample inputs for common suspicious SQL injection patterns.
+        This tool checks input patterns only and does not execute SQL.
+    </p>
+</section>
+
+<section class="grid">
+    <article class="card">
+        <div class="card-icon">01</div>
+        <span class="eyebrow">INPUT ANALYSIS</span>
+        <h2>Test Your Input</h2>
+
+        <p>
+            Enter sample text below to check whether it contains
+            patterns that may be suspicious.
+        </p>
+
+        <form method="POST">
+            <label for="test_input">Test input</label>
+
+            <input
+                type="text"
+                id="test_input"
+                name="test_input"
+                maxlength="500"
+                value="{{ test_input }}"
+                placeholder="Enter sample text to analyze..."
+                required
+            >
+
+            <div class="button-row">
+                <button type="submit" class="btn">
+                    Analyze Input →
+                </button>
+
+                <a class="btn btn-secondary"
+                   href="{{ url_for('dashboard') }}">
+                    Dashboard
+                </a>
+            </div>
+        </form>
+    </article>
+
+    <article class="card">
+        <div class="card-icon">02</div>
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2>Detection Overview</h2>
+
+        <p>
+            <strong>Pattern checking</strong><br>
+            Looks for common suspicious input patterns.
+        </p>
+
+        <p>
+            <strong>Safe demonstration</strong><br>
+            The test does not execute the submitted text as SQL.
+        </p>
+
+        <p>
+            <strong>Important</strong><br>
+            This is a basic pattern detector, not a complete security audit.
+            A result cannot guarantee that an input is safe or malicious.
+        </p>
+    </article>
+</section>
+
+{% if result %}
+<section class="card">
+    <span class="eyebrow">ANALYSIS COMPLETE</span>
+    <h2>Detection Result</h2>
+
+    <div class="note">
+        {{ result }}
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

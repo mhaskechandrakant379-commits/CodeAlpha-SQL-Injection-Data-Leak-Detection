@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home | SecureVault{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">◈ Cybersecurity Project</span>
+
+    <h1>Detect Data Leaks.<br>
+        <span class="gradient-text">Strengthen Security.</span>
+    </h1>
+
+    <p>
+        An educational security application demonstrating SQL injection
+        pattern detection, secure password hashing, and encrypted data storage.
+    </p>
+
+    <div class="button-row">
+        <a class="btn" href="{{ url_for('register') }}">Get Started →</a>
+        <a class="btn btn-secondary" href="{{ url_for('login') }}">Sign In</a>
+    </div>
+</section>
+
+<section class="grid">
+    <article class="card">
+        <div class="card-icon">⌕</div>
+        <h2>SQL Injection Detection</h2>
+        <p>Test sample inputs for common suspicious SQL injection patterns.</p>
+    </article>
+
+    <article class="card">
+        <div class="card-icon">🔐</div>
+        <h2>Encrypted Data Vault</h2>
+        <p>Store demonstration notes using authenticated encryption.</p>
+    </article>
+
+    <article class="card">
+        <div class="card-icon">🛡</div>
+        <h2>Secure Authentication</h2>
+        <p>Explore account authentication and password hashing in a Flask app.</p>
+    </article>
+</section>
+
+<section class="card">
+    <h2>Learn by building</h2>
+    <p>
+        This project demonstrates selected security techniques for learning.
+        Pattern detection alone cannot prevent every SQL injection attack.
+    </p>
+</section>
+{% endblock %}
