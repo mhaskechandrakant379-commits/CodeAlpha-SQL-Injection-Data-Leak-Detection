@@ -40,3 +40,7 @@ verify_old_login.py
 # Local template backups and text copies
 templates/*.html.txt
 templates/login_backup.html
+
+# Local CSRF implementation backups
+app_before_csrf_backup.py
+templates_before_csrf_backup/

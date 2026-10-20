@@ -46,6 +46,7 @@
     <p>Passwords are stored using secure password hashing.</p>
 
     <form method="POST" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <button type="submit" class="btn btn-secondary">Logout</button>
     </form>
 </section>

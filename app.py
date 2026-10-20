@@ -10,6 +10,7 @@ from flask import (
     redirect, url_for, session, flash
 )
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import generate_password_hash, check_password_hash
 from crypto_utils import encrypt_text, decrypt_text
 
@@ -23,6 +24,8 @@ if not secret_key:
     secret_key = secrets.token_hex(32)
 
 app.config["SECRET_KEY"] = secret_key
+
+csrf = CSRFProtect(app)
 
 database_url = os.environ.get("DATABASE_URL")
 
