@@ -27,3 +27,16 @@ patch_capability.py
 
 # Log files
 *.log
+
+# Local documentation backups
+README_backup.md
+
+# Local diagnostic and migration scripts
+check_old_account.py
+migrate_sqlite_to_postgres.py
+verify_encryption.py
+verify_old_login.py
+
+# Local template backups and text copies
+templates/*.html.txt
+templates/login_backup.html
