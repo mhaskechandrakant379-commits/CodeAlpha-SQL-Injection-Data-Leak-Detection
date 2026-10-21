@@ -20,6 +20,7 @@ This project demonstrates security mechanisms that help reduce the risk of unaut
 - Time-limited, single-use capability codes
 - Authenticated dashboard and secure data access
 - Flask web interface
+- CSRF protection for supported forms using Flask-WTF
 - SQLite support for local development
 - PostgreSQL configuration for deployment
 
@@ -28,6 +29,8 @@ This project demonstrates security mechanisms that help reduce the risk of unaut
 - Python
 - Flask
 - Flask-SQLAlchemy
+- Flask-WTF
+- WTForms
 - SQLAlchemy
 - SQLite
 - PostgreSQL
@@ -129,6 +132,7 @@ Selected security events, including suspicious SQL injection patterns, are recor
 - Use PostgreSQL for the deployed application when `DATABASE_URL` is configured.
 - Do not commit `.env` files, passwords, database URLs containing credentials, or encryption keys.
 - Use HTTPS in production.
+- Use CSRF tokens to protect supported forms against cross-site request forgery.
 - SQL injection pattern detection alone does not replace parameterized queries, input validation, and secure database access practices.
 
 ## Testing
